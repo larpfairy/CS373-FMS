@@ -1,4 +1,4 @@
-package cs373.p1;
+package cs373.facilities.view;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
