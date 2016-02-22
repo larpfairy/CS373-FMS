@@ -10,7 +10,7 @@ public class Facility {
     private Boolean isVacant;
     private int capacity;
     private Schedule facilitySchedule = new Schedule();
-    private Schedule inspectionSchedule = new Schedule();
+    private Schedule maintenanceLog = new Schedule(); // keep track of maintenance that has been done on facility
     private ArrayList<MaintenanceRequest> maintRequests = new ArrayList<>();
 
     public Facility() {
@@ -33,26 +33,26 @@ public class Facility {
         return address;
     }
 
-    public int requestAvailableCapacity(){
+    public int requestAvailableCapacity(LocalDateTime start, LocalDateTime stop) {
     	return capacity;
     }
-    public Boolean isInUseDuringInterval(){
-    	return true;
+    public Boolean isInUseDuringInterval(LocalDateTime start, LocalDateTime stop) {
+        // use checkVacancyDuringInterval()
+        return true;
     }
-    public void assignFacilityToUse(String start, String stop){
-    	facilitySchecule.addEvent(start, stop);
+    public void assignFacilityToUse(LocalDateTime start, LocalDateTime stop){
+        // TODO: check that there's no conflicts first
+        facilitySchecule.addEvent(start, stop);
     }
-    public String listActualUsage(){
-    	String usage;
-    	for(int i = 0; i < facilitySchedule.getSize(); i++){
-
-    	}
+    public String listActualUsage() {
+        return facilitySchedule.getEvents();
     }
     public void makeFacilityMaintRequest(String msg, double cost) {
-        maintRequests.add(msg)
+        maintRequests.add(new MaintenanceRequest(msg, cost));
     }
-    public void scheduleMaintenance() {
-        // TODO
+    public void scheduleMaintenance() { // TODO
+        // Clear events that coincide with maintenance times using removeEvents(),
+        // then schedule maintenance times through addEvent()
     }
     public double calcMaintCostForFacility() {
         double cost = 0;
@@ -61,13 +61,13 @@ public class Facility {
         }
         return cost;
     }
-    public String calcProblemRateForFacility() {
+    public String calcProblemRateForFacility() { // TODO
         return "To be implemented...";
     }
-    public String listMaintRequests() {
-
+    public String listMaintRequests() { // TODO
+        return "tobeimpl";
     }
     public String listMaintenance() { // past maint that has been done
-
+        // TODO
     }
 }

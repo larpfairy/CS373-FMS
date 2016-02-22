@@ -12,5 +12,14 @@ class MaintenanceRequest {
     public void setRequest(String request) {
         this.request = request;
     }
+    public void getRequest() {
+        return request;
+    }
 
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+    public double getCost() {
+        return cost;
+    }
 }
