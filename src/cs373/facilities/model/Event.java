@@ -14,5 +14,24 @@ public class Event {
         this.stop = stop;
     }
 
-    // TODO: getters & setters below
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setStart(LocalDateTime start) {
+        this.start = start;
+    }
+    public LocalDateTime getStart() {
+        return start;
+    }
+
+    public void setStop(LocalDateTime stop) {
+        this.stop = stop;
+    }
+    public LocalDateTime getStop() {
+        return stop;
+    }
 }
