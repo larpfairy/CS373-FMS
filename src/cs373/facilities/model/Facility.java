@@ -7,7 +7,6 @@ public class Facility {
 
     private String name;
     private Address address;
-    private List<Unit> unitList = new ArrayList<Unit>();
 
     public Facility() {}
     public Facility(String name) {
@@ -28,16 +27,6 @@ public class Facility {
         return address;
     }
 
-    public void addNewUnit(Unit unit) {
-        unitList.add(unit);
-    }
-    public List<Unit> getUnits() {
-        return unitList;
-    }
+    // TODO: Maintenance requests, etc.
 
-    public void getMaintenanceRequests() {
-        for (Unit u : unitList) {
-            System.out.println(u.getMaintenanceRequests());
-        }
-    }
 }
