@@ -17,8 +17,8 @@ public class Address {
 		return street + "\n" + city + "," + state + " " + zip; 
 	}
 
-	public String setStreet(String street) { this.street = street; }
-	public String setCity(String city)     { this.city  = city;    }
-	public String setState(String state)   { this.state = state;   }
-	public String setZip(string zip)       { this.zip = zip;       }
+	public void setStreet(String street) { this.street = street; }
+	public void setCity(String city)     { this.city  = city;    }
+	public void setState(String state)   { this.state = state;   }
+	public void setZip(String zip)       { this.zip = zip;       }
 }

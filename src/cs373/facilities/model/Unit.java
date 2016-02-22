@@ -1,8 +1,6 @@
-package cs372.facilities.model;
+package cs373.facilities.model;
 
 public class Unit {
-
-
 
 	// To do: Each unit will have separate maintenance requests --
 	// e.g.,
@@ -23,5 +21,4 @@ public class Unit {
 	//
 	//
 	//
-	public
 }

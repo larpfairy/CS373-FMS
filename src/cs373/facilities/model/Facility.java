@@ -1,5 +1,8 @@
 package cs373.facilities.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Facility {
 
     private String name;
@@ -28,11 +31,11 @@ public class Facility {
     public void addNewUnit(Unit unit) {
         unitList.add(unit);
     }
-    public List<String> getUnits() {
+    public List<Unit> getUnits() {
         return unitList;
     }
 
-    public List<String> getMaintenanceRequests() {
+    public void getMaintenanceRequests() {
         for (Unit u : unitList) {
             System.out.println(u.getMaintenanceRequests());
         }
