@@ -11,8 +11,7 @@ public class Facility {
     private int capacity;
     private Schedule facilitySchedule = new Schedule();
     private Schedule inspectionSchedule = new Schedule();
-    private Maintenance facilityMaintenance = new Maintenance();
-    
+    private ArrayList<MaintenanceRequest> maintRequests = new ArrayList<>();
 
     public Facility() {
     }
@@ -33,7 +32,7 @@ public class Facility {
     public Address getAddress() {
         return address;
     }
-    
+
     public int requestAvailableCapacity(){
     	return capacity;
     }
@@ -46,12 +45,29 @@ public class Facility {
     public String listActualUsage(){
     	String usage;
     	for(int i = 0; i < facilitySchedule.getSize(); i++){
-    		
+
     	}
     }
-    
-    
+    public void makeFacilityMaintRequest(String msg, double cost) {
+        maintRequests.add(msg)
+    }
+    public void scheduleMaintenance() {
+        // TODO
+    }
+    public double calcMaintCostForFacility() {
+        double cost = 0;
+        for (MaintenanceRequest request : maintRequests) {
+            cost += request.getCost();
+        }
+        return cost;
+    }
+    public String calcProblemRateForFacility() {
+        return "To be implemented...";
+    }
+    public String listMaintRequests() {
 
-    // TODO: Maintenance requests, etc.
+    }
+    public String listMaintenance() { // past maint that has been done
 
+    }
 }
