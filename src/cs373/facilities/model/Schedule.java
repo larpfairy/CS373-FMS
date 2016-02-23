@@ -42,4 +42,8 @@ public class Schedule {
         }
         return usage;
     }
+
+    public int getNumEvents() {
+        return eventList.size();
+    }
 }

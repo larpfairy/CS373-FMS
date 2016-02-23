@@ -8,19 +8,7 @@ import java.time.LocalDateTime;
 public class MainClass {
 
 	public static void main(String[] args) {
-//		System.out.println("Hello world!");
-//		
-//		Schedule schedule = new Schedule();
-//		System.out.println("Successfully instantiated: Schedule()");
-//		
-//		MaintenanceRequest maintreq = new MaintenanceRequest("thisisadescription", 3.0);
-//		System.out.println(maintreq.getRequest());
-//		System.out.println(maintreq.getCost());
-//		System.out.println("Successfully instantiated: MaintenanceRequest!");
-//		
-//		Facility cudahyScience = new Facility("Cudahy Science");
-//		System.out.println(cudahyScience.getFacilityName());
-		
+
 		Facility cudahyScience = new Facility("Cudahy Science");
 		
 		Address cudahyAddress = new Address();
@@ -32,6 +20,10 @@ public class MainClass {
 		cudahyScience.setAddress(cudahyAddress);
 		
 		System.out.println(cudahyScience.getAddress().getFullAddress());
+		
+		
+		
+		
 		
 		
 	}

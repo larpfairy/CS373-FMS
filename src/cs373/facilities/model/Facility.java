@@ -60,31 +60,23 @@ public class Facility {
     }
 
     public void ScheduleMaintenance() {
-        LocalDateTime startofMaintSchedule = beginningOfTime.plusDays(10);
+        LocalDateTime startofMaintCycle = beginningOfTime.plusDays(10);
         for (int i = 0; i < maintRequests.size(); i++) {
-            // Note that each maintenance event takes 24 hours to complete
-            LocalDateTime maintenanceEventStart = startofMaintSchedule.plusHours(i*24); // 24, 36
-            LocalDateTime maintenanceEventStop  = startofMaintSchedule.plusHours(i* + 24);
 
+            // Maintenance events occur every 7 days, and take 24 hours to complete
+            LocalDateTime maintEventStart = startofMaintCycle.plusDays(i * 7);
+            LocalDateTime maintEventStop  = startofMaintCycle.plusDays(i * 7 + 1);
+            facilitySchedule.removeEvents(maintEventStart, maintEventStop);
 
+            // Construct a maintenance event:
+            Event maint = new Event(maintRequests.get(i).getRequest(),
+                                    maintEventStart,
+                                    maintEventStop,
+                                    true,
+                                    maintRequests.get(i).getCost());
 
+            facilitySchedule.addEvent(maint);
         }
-
-    }
-
-    public void scheduleMaintenance() {
-        for (int i = 0; i < maintRequests.size(); i++) {
-            LocalDateTime startofMaint = beginningOfTime.plusDays(10);
-
-
-            for (int i = 0; i < maintRequests.size(); i++) {
-                facilitySchedule.removeEvents(startofMaint.plusHours(i*3), startofMaint.plusHours(i*3 + 24))
-            }
-        }
-        // Clear events that coincide with maintenance times using removeEvents(),
-        // then schedule maintenance times through addEvent(). However, need to figure
-        // out way of determining where to place maintenance and how much time it'll
-        // take.
     }
 
     public double calcMaintCostForFacility() {
@@ -94,19 +86,19 @@ public class Facility {
         return cost;
     }
 
-    public String calcProblemRateForFacility() { // TODO
-        return "To be implemented...";
+    public int calcProblemRateForFacility() {
+        return maintenanceLog.getNumEvents() + maintRequests.size();
     }
 
     public String listMaintRequests() {
-        String output;
+        String output = null;
         for (MaintenanceRequest request : maintRequests)
             output += request.getRequest() + " | " + "$ " + request.getCost();
         return output;
     }
 
-    public String getMaintenanceLog() { // TODO: These will likely have dates and costs, too
-        String output;
+    public String getMaintenanceLog() { // TODO: Change to retrieve from maint log, not maint requests
+        String output = null;
         for (MaintenanceRequest request : maintRequests)
             output += request.getRequest() + " | " + "$ " + request.getCost();
         return output;
