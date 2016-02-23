@@ -22,7 +22,6 @@ public class Facility {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getFacilityName() {
         return name;
     }
@@ -30,9 +29,12 @@ public class Facility {
     public void setAddress(Address address) {
         this.address = address;
     }
-
     public Address getAddress() {
         return address;
+    }
+
+    public LocalDateTime getBeginningOfTime() {
+        return beginningOfTime;
     }
 
     public int requestAvailableCapacity(LocalDateTime start, LocalDateTime stop) {
@@ -97,10 +99,15 @@ public class Facility {
         return output;
     }
 
-    public String getMaintenanceLog() { // TODO: Change to retrieve from maint log, not maint requests
+    // TODO: Change to retrieve from maint log, not maint requests
+    public String getMaintenanceLog() {
         String output = null;
         for (MaintenanceRequest request : maintRequests)
             output += request.getRequest() + " | " + "$ " + request.getCost();
         return output;
+    }
+
+    public Schedule getSchedule() {
+        return facilitySchedule;
     }
 }
