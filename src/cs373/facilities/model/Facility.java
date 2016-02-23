@@ -61,7 +61,7 @@ public class Facility {
         maintRequests.add(new MaintenanceRequest(msg, cost));
     }
 
-    public void ScheduleMaintenance() {
+    public void scheduleMaintenance() {
         LocalDateTime startofMaintCycle = beginningOfTime.plusDays(10);
         for (int i = 0; i < maintRequests.size(); i++) {
 
@@ -78,6 +78,7 @@ public class Facility {
                                     maintRequests.get(i).getCost());
 
             facilitySchedule.addEvent(maint);
+            maintenanceLog.addEvent(maint);
         }
     }
 
@@ -93,18 +94,14 @@ public class Facility {
     }
 
     public String listMaintRequests() {
-        String output = null;
+        String output = "";
         for (MaintenanceRequest request : maintRequests)
-            output += request.getRequest() + " | " + "$ " + request.getCost();
+            output += "Maintenance Request: " + request.getRequest() + " | " + "$ " + request.getCost() + "\n";
         return output;
     }
 
-    // TODO: Change to retrieve from maint log, not maint requests
-    public String getMaintenanceLog() {
-        String output = null;
-        for (MaintenanceRequest request : maintRequests)
-            output += request.getRequest() + " | " + "$ " + request.getCost();
-        return output;
+    public Schedule getMaintenanceLog() {
+        return maintenanceLog;
     }
 
     public Schedule getSchedule() {

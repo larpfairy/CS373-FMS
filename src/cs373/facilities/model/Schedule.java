@@ -16,8 +16,10 @@ public class Schedule {
     public void removeEvents(LocalDateTime start, LocalDateTime stop) {
         for (int i = 0; i < eventList.size(); i++) {
             if (start.isAfter(eventList.get(i).getStart()) && start.isBefore(eventList.get(i).getStop())) {
+                System.out.println("Removing event due to conflict with maintenance: " + eventList.get(i).getDescription());
                 eventList.remove(i);
             } else if (stop.isAfter(eventList.get(i).getStart()) && stop.isBefore(eventList.get(i).getStop())) {
+            	System.out.println("Removing event due to conflict with maintenance: " + eventList.get(i).getDescription());
                 eventList.remove(i);
             }
         }
@@ -35,13 +37,21 @@ public class Schedule {
     }
 
     public String getEvents() {
-        String usage = null;
+        String usage = "";
         for (int i = 0; i < eventList.size(); i++) {
-            usage += "Event " + i+1 + ": " + eventList.get(i).getDescription() + "\n"
-                  +  eventList.get(i).getStart() + " - " + eventList.get(i).getStop();
+            usage += eventList.get(i).getFullDescription();
         }
         return usage;
     }
+
+    // public String getEvents() {
+    //     String usage = "";
+    //     for (int i = 0; i < eventList.size(); i++) {
+    //         usage += "Event " + i + ": \t" + eventList.get(i).getDescription() + "\t\t" +
+    //                  eventList.get(i).getStart() + " - " + eventList.get(i).getStop() + "\n";
+    //     }
+    //     return usage;
+    // }
 
     public int getNumEvents() {
         return eventList.size();

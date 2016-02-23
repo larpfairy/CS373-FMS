@@ -60,6 +60,11 @@ public class Event {
         this.cost = cost;
     }
     public double getCost() {
-        return cost;        
+        return cost;
+    }
+
+    public String getFullDescription() {
+        return "Event: \t" + getDescription() + "\t\t" + getStart() +
+               " - " + getStop() + " Cost: $" + getCost() + "\n";
     }
 }
