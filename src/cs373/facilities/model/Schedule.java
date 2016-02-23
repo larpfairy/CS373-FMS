@@ -19,7 +19,7 @@ public class Schedule {
                 System.out.println("Removing event due to conflict with maintenance: " + eventList.get(i).getDescription());
                 eventList.remove(i);
             } else if (stop.isAfter(eventList.get(i).getStart()) && stop.isBefore(eventList.get(i).getStop())) {
-            	System.out.println("Removing event due to conflict with maintenance: " + eventList.get(i).getDescription());
+                System.out.println("Removing event due to conflict with maintenance: " + eventList.get(i).getDescription());
                 eventList.remove(i);
             }
         }

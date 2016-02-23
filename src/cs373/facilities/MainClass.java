@@ -6,22 +6,22 @@ import java.time.LocalDateTime;
 
 public class MainClass {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		Facility argonneLab = new Facility("Argonne National Laboratory");
+        Facility argonneLab = new Facility("Argonne National Laboratory");
 
-		Address cudahyAddress = new Address();
-		cudahyAddress.setStreet("123 Sheridan Avenue");
-		cudahyAddress.setState("IL");
-		cudahyAddress.setZip("60660");
-		cudahyAddress.setCity("Chicago");
+        Address cudahyAddress = new Address();
+        cudahyAddress.setStreet("123 Sheridan Avenue");
+        cudahyAddress.setState("IL");
+        cudahyAddress.setZip("60660");
+        cudahyAddress.setCity("Chicago");
 
-		argonneLab.setAddress(cudahyAddress);
+        argonneLab.setAddress(cudahyAddress);
 
         LocalDateTime event1Start = argonneLab.getBeginningOfTime();
         LocalDateTime event1End = event1Start.plusDays(2);
-		Event event1 = new Event("Accelerate protons           ", event1Start, event1End);
-		argonneLab.assignFacilityToUse(event1);
+        Event event1 = new Event("Accelerate protons           ", event1Start, event1End);
+        argonneLab.assignFacilityToUse(event1);
 
         LocalDateTime event2Start = event1End.plusDays(7);
         LocalDateTime event2End = event2Start.plusDays(4);
@@ -68,8 +68,8 @@ public class MainClass {
 
         System.out.println("\nPrinting schedule again: ");
         System.out.println(argonneLab.getSchedule().getEvents());
-        
+
         System.out.println("Printing maintenance log: ");
         System.out.println(argonneLab.getMaintenanceLog().getEvents());
-	}
+    }
 }

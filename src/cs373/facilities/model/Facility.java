@@ -38,7 +38,7 @@ public class Facility {
     }
 
     public int requestAvailableCapacity(LocalDateTime start, LocalDateTime stop) {
-    	return capacity;
+        return capacity;
     }
 
     public Boolean isInUseDuringInterval(LocalDateTime start, LocalDateTime stop) {
