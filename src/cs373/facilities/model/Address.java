@@ -14,7 +14,7 @@ public class Address {
 	public String getState()  { return state;  }
 	public String getZip()    { return zip;    }
 	public String getFullAddress() {
-		return street + "\n" + city + "," + state + " " + zip; 
+		return street + "\n" + city + ", " + state + " " + zip; 
 	}
 
 	public void setStreet(String street) { this.street = street; }

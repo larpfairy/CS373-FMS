@@ -10,6 +10,7 @@ public class Facility {
     private Address address;
     private Boolean isVacant;
     private int capacity;
+    private LocalDateTime beginningOfTime = LocalDateTime.now();
     private Schedule facilitySchedule = new Schedule();
     private Schedule maintenanceLog = new Schedule();
     private ArrayList<MaintenanceRequest> maintRequests = new ArrayList<>();
@@ -58,7 +59,28 @@ public class Facility {
         maintRequests.add(new MaintenanceRequest(msg, cost));
     }
 
+    public void ScheduleMaintenance() {
+        LocalDateTime startofMaintSchedule = beginningOfTime.plusDays(10);
+        for (int i = 0; i < maintRequests.size(); i++) {
+            // Note that each maintenance event takes 24 hours to complete
+            LocalDateTime maintenanceEventStart = startofMaintSchedule.plusHours(i*24); // 24, 36
+            LocalDateTime maintenanceEventStop  = startofMaintSchedule.plusHours(i* + 24);
+
+
+
+        }
+
+    }
+
     public void scheduleMaintenance() {
+        for (int i = 0; i < maintRequests.size(); i++) {
+            LocalDateTime startofMaint = beginningOfTime.plusDays(10);
+
+
+            for (int i = 0; i < maintRequests.size(); i++) {
+                facilitySchedule.removeEvents(startofMaint.plusHours(i*3), startofMaint.plusHours(i*3 + 24))
+            }
+        }
         // Clear events that coincide with maintenance times using removeEvents(),
         // then schedule maintenance times through addEvent(). However, need to figure
         // out way of determining where to place maintenance and how much time it'll

@@ -14,6 +14,13 @@ public class Event {
         this.stop = stop;
     }
 
+    public void setMaintenance(boolean isMaint) {
+        this.isMaintenance = isMaint;
+    }
+    public boolean isMaintenanceEvent() {
+        return isMaintenance;        
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }

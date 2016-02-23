@@ -1,18 +1,18 @@
 package cs373.facilities.model;
 
-class MaintenanceRequest {
+public class MaintenanceRequest {
     private String request;
     private double cost;
 
     public MaintenanceRequest(String request, double cost) {
-        this.request = req;
+        this.request = request;
         this.cost = cost;
     }
 
     public void setRequest(String request) {
         this.request = request;
     }
-    public void getRequest() {
+    public String getRequest() {
         return request;
     }
 
