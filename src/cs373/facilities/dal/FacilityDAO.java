@@ -38,7 +38,7 @@ import java.util.Properties;
  *
  * java.net.ConnectException: Connection refused
  */
-public class DBDemo {
+public class FacilityDAO {
 
 	/** The name of the MySQL account to use (or empty for anonymous) */
 	private final String userName = "sqluser";

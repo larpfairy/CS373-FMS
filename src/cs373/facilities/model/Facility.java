@@ -44,8 +44,8 @@ public class Facility {
     }
 
     public void assignFacilityToUse(Event event){
-        if (checkVacancyDuringInterval(event.getStart(), event.getStop())) {
-            facilitySchedule.addEvent(start, stop);
+        if (facilitySchedule.checkVacancyDuringInterval(event.getStart(), event.getStop())) {
+            facilitySchedule.addEvent(event);
         } else {
             System.out.println("Could not schedule event due to conflict!");
         }

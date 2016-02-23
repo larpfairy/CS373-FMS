@@ -2,7 +2,6 @@ package cs373.facilities;
 
 import cs373.facilities.dal.*;
 import cs373.facilities.model.*;
-import cs373.facilities.view.*;
 import java.time.LocalDateTime;
 
 public class MainClass {
