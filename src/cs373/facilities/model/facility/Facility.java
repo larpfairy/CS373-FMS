@@ -1,19 +1,23 @@
-package cs373.facilities.model;
+package cs373.facilities.model.facility;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDateTime;
+
+import cs373.facilities.model.Event;
+import cs373.facilities.model.MaintenanceRequest;
+import cs373.facilities.model.Schedule;
 
 public class Facility {
 
     private String name;
+    private String manager;
     private Address address;
-    private Boolean isVacant;
     private int capacity;
     private LocalDateTime beginningOfTime = LocalDateTime.now();
     private Schedule facilitySchedule = new Schedule();
     private Schedule maintenanceLog = new Schedule();
-    private ArrayList<MaintenanceRequest> maintRequests = new ArrayList<>();
+    private List<MaintenanceRequest> maintRequests = new ArrayList<>();
 
     public Facility(String name) {
         this.name = name;

@@ -1,0 +1,23 @@
+- Move scheduling stuff into Unit.java -- getting facility maintenance stuff will
+  be done by calling each unit, and then aggregating all of the Unit maintenance
+  /inspection/etc
+  - This means we should move maintenance and everything into unit, as well.
+- Therefore we will have the following:
+
+  - FacilityDAO: Table for each facility -- listing owner, address, etc
+  - UnitDAO: UnitID and whatever else there is -- not going to list maintenance requests
+             and stuff in here, since that would involve placing a list inside of a column.
+  - MaintenanceDAO: This one will list all of the maintenance requests -- perhaps have
+  a table per unit?
+
+- Maintenance will be done purely through inspections. That is, once we've scheduled inspections,
+  we'll run through the inspectionRequest list, and schedule a bunch of maintenance events.
+
+- Switch to Postgresql
+
+- Possiblity -- read a schedule from a text file, to make the whole scheduling stuff easier?
+
+Unit.java ----------
+- Inspection Log
+- Maintenance Log (both of these kept in table)
+- 

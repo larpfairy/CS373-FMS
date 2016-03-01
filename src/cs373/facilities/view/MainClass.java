@@ -1,7 +1,10 @@
-package cs373.facilities;
+package cs373.facilities.view;
 
 import cs373.facilities.dal.*;
 import cs373.facilities.model.*;
+import cs373.facilities.model.facility.Address;
+import cs373.facilities.model.facility.Facility;
+
 import java.time.LocalDateTime;
 
 public class MainClass {

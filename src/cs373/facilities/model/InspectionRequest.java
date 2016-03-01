@@ -1,16 +1,16 @@
 package cs373.facilities.model;
 
-
 /**
- * MaintenanceRequests are produced from InspectionRequests, after calling
- * inspectUnit from within a Unit. MaintenanceRequests differ from 
+ * An individual InspectionRequest. These are produced by people that work in
+ * the facility. Once these are set inside of a Unit, calling inspectUnit runs
+ * through all pending InspectionRequets. These InspectionRequests in turn
+ * produce cause MaintenanceRequests, if a problem is found.
  */
-public class MaintenanceRequest {
+public class InspectionRequest {
 
     private String id;
     private String description;
     private String technician;
-    private double cost;
 
     public void setID(String id) {
         this.id = id;
@@ -31,12 +31,5 @@ public class MaintenanceRequest {
     }
     public String getTechnician() {
         return technician;
-    }
-
-    public void setCost(double cost) {
-        this.cost = cost;
-    }
-    public double getCost() {
-        return cost;
     }
 }
