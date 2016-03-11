@@ -6,56 +6,80 @@ import cs373.facilities.model.Schedule;
 
 public class Unit {
 
-    private String id;
-    private int floor;
+    private String ID;
     private int capacity;
-    private boolean isVacant;
-    private Schedule unitSchedule = new Schedule();
-    private Schedule maintenanceLog = new Schedule();
-    private List<MaintenanceRequest> maintRequests  = new ArrayList<>();
-    private List<InspectionRequest> inspectRequests = new ArrayList<>();
 
-    public String getUnitID() {
-        return id;
-    }
-    public void setUnitID(String id) {
-        this.id = id;
-    }
+    private Schedule schedule;
+    private Schedule maintenanceSchedule;
+    private List<InspectionRequest> inspectionRequests;
+    private List<InspectionRequest> pastInspectionsLog;
 
-    public int getFloor() {
-        return floor;
-    }
-    public void setFloor(int floor) {
-        this.floor = floor;
+    Unit() {
+        this.schedule = new Schedule();
+        this.maintenanceSchedule = new Schedule();
+        this.inspectionLog = new List<>();
+        this.inspectionRequests = new List<>();
     }
 
-    public int getCapacity() {
-        return capacity;
-    }
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
+    public void setID(String id) { this.ID = id; }
+    public String getID() { return ID; }
 
-    public boolean getVacancy() {
-        return isVacant;
-    }
-    public void setVacancy(boolean vacancy) {
-        this.isVacant = vacancy;
-    }
+    public void setCapacity(int capacity) { this.capacity = capacity; }
+    public int getCapacity() { return capacity; }
 
-    public Schedule getSchedule() {
-        return unitSchedule;
-    }
-
-    /**
-     * Runs through inspectRequests and schedules each inspection request in the
-     * main schedule.
-     */
-    public void inspectUnit() {
-        for (InspectionRequest request : inspectRequests) {
-            // Construct a MaintenanceEvent from each one, rather than a MaintenanceRequest
-            // -- there shouldn't be additional requests to go through once the unit has
-            // been inspected. 
+    public void setSchedule(Schedule schedule) { this.schedule = schedule; }
+    public String getSchedule() {
+        string output = "";
+        for (Event e : schedule) {
+            output += e.getFullDescription();
         }
+        return output;
+    }
+
+    public void scheduleUse(Event e) {
+        if (schedule.checkVacancyDuringInterval(e.getStart(), e.getStop())) {
+            System.out.println("Unit " + ID + " | Adding:\n" + event.getFullDescription());
+            schedule.add(event);
+        } else {
+            System.out.println("Could not add event: " + e.getDescription() + " to Unit " + ID + ".");
+        }
+    }
+
+    public boolean getUnitVacancy(LocalDateTime start, LocalDateTime stop) {
+        return schedule.checkVacancyDuringInterval(start, stop);
+    }
+
+    public void setMaintSchedule(Schedule schedule) {
+        this.maintenanceSchedule = schedule;
+    }
+    public String getMaintenanceSchedule() {
+        String output = "";
+        for (Event e : maintenanceSchedule) {
+            output += e.getFullDescription(); // TODO: Incorporate cost stuff
+        }
+        return output;
+    }
+
+    public void addInspectionRequest(InspectionRequest request) {
+        inspectionRequests.add(request);
+        pastInspectionsLog.add(request);
+    }
+    public String getInspectionRequests() {
+        String output = "";
+        for (InspectionRequest r : inspectionRequests)
+            output += r.getFullDescription() + "\n";
+        return output;
+    }
+
+    public String getPastInspectionsLog() {
+        String output = ""
+        for (InspectionRequest r : pastInspectionsLog)
+            output += r.getFullDescription() + "\n";
+        return output;
+    }
+
+    public void scheduleMaintenance() {
+        for (InspectionRequest r : inspectionRequests)
+            schedule.addEvent()
     }
 }

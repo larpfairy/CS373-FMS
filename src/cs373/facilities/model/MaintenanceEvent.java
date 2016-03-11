@@ -1,30 +1,16 @@
 package cs373.facilities.model;
 
-
 /**
  * MaintenanceRequests are produced from InspectionRequests, after calling
- * inspectUnit from within a Unit. MaintenanceRequests differ from 
+ * inspectUnit from within a Unit. MaintenanceRequests differ from Inspections
+ * in that MaintenanceRequests are never filed from the main method -- they
+ * are only scheduled by calling inspectUnit -- and maintenance requests are
+ * assigned actual time slots within the unit schedule.
  */
-public class MaintenanceRequest {
+public class MaintenanceEvent extends Event {
 
-    private String id;
-    private String description;
     private String technician;
     private double cost;
-
-    public void setID(String id) {
-        this.id = id;
-    }
-    public String getID() {
-        return id;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public String getDescription() {
-        return description;
-    }
 
     public void setTechnician(String technician) {
         this.technician = technician;

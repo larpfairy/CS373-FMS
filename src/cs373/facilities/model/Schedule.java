@@ -5,7 +5,11 @@ import java.time.LocalDateTime;
 
 public class Schedule {
 
-    private ArrayList<Event> eventList = new ArrayList<Event>();
+    private ArrayList<Event> eventList;
+    
+    public Schedule() {
+        this.eventList = new ArrayList<Event>();
+    }
 
     public void addEvent(Event event) {
         eventList.add(event);

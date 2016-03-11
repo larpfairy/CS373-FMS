@@ -13,11 +13,15 @@
 - Maintenance will be done purely through inspections. That is, once we've scheduled inspections,
   we'll run through the inspectionRequest list, and schedule a bunch of maintenance events.
 
-- Switch to Postgresql
+- TODO: Change MaintenanceRequest to MaintenanceEvent -- there's no need to file
+ InspectionRequest -> MaintenanceRequest -> MaintenanceEvent. Rather,
+ InspectionRequest -> MaintenanceEvent
+ MaintenanceEvent inherits from Event!
+
+- Switch to Postgresql / SQLite
 
 - Possiblity -- read a schedule from a text file, to make the whole scheduling stuff easier?
 
 Unit.java ----------
 - Inspection Log
 - Maintenance Log (both of these kept in table)
-- 

@@ -32,4 +32,9 @@ public class InspectionRequest {
     public String getTechnician() {
         return technician;
     }
+
+    public String getFullDescription() {
+        return "Inspection Request: " + getDescription() + "\t\t" + " Technician: "
+                + getTechnician();
+    }
 }

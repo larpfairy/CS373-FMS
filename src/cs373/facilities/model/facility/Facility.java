@@ -14,13 +14,11 @@ public class Facility {
     private String manager;
     private Address address;
     private int capacity;
-    private LocalDateTime beginningOfTime = LocalDateTime.now();
-    private Schedule facilitySchedule = new Schedule();
-    private Schedule maintenanceLog = new Schedule();
-    private List<MaintenanceRequest> maintRequests = new ArrayList<>();
+    private LocalDateTime beginningOfTime;
 
     public Facility(String name) {
         this.name = name;
+        this.beginningOfTime = LocalDateTime.now();
     }
 
     public void setName(String name) {
@@ -45,9 +43,9 @@ public class Facility {
         return capacity;
     }
 
-    public Boolean isInUseDuringInterval(LocalDateTime start, LocalDateTime stop) {
-        return facilitySchedule.checkVacancyDuringInterval(start, stop);
-    }
+    // public Boolean isInUseDuringInterval(LocalDateTime start, LocalDateTime stop) {
+    //     return facilitySchedule.checkVacancyDuringInterval(start, stop);
+    // }
 
     public void assignFacilityToUse(Event event){
         if (facilitySchedule.checkVacancyDuringInterval(event.getStart(), event.getStop())) {
