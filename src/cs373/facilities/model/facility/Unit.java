@@ -4,6 +4,9 @@ import cs373.facilities.model.InspectionRequest;
 import cs373.facilities.model.MaintenanceRequest;
 import cs373.facilities.model.Schedule;
 
+import java.util.Random;
+import java.time.LocalDateTime;
+
 public class Unit {
 
     private String ID;
@@ -30,9 +33,8 @@ public class Unit {
     public void setSchedule(Schedule schedule) { this.schedule = schedule; }
     public String getSchedule() {
         string output = "";
-        for (Event e : schedule) {
+        for (Event e : schedule)
             output += e.getFullDescription();
-        }
         return output;
     }
 
@@ -54,9 +56,8 @@ public class Unit {
     }
     public String getMaintenanceSchedule() {
         String output = "";
-        for (Event e : maintenanceSchedule) {
-            output += e.getFullDescription(); // TODO: Incorporate cost stuff
-        }
+        for (Event e : maintenanceSchedule)
+            output += e.getFullDescription();
         return output;
     }
 
@@ -78,8 +79,23 @@ public class Unit {
         return output;
     }
 
+    public static Random r = new Random();
+
     public void scheduleMaintenance() {
-        for (InspectionRequest r : inspectionRequests)
-            schedule.addEvent()
+        for (InspectionRequest r : inspectionRequests) {
+            int duration = r.nextInt(5) + 1;
+            double cost  = r.nextInt(10000) + 500;
+            String technician = "Billy Bob";
+            LocalDateTime startMaint = schedule.findVacantInterval(duration, schedule.getBeginningOfTime());
+            schedule.addEvent(
+                new Event(r.getDescription(),
+                          startMaint,
+                          startMaint.plusHours(),
+                          true,
+                          technician,
+                          cost
+                )
+            );
+        }
     }
 }

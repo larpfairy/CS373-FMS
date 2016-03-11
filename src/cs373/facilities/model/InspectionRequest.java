@@ -34,7 +34,7 @@ public class InspectionRequest {
     }
 
     public String getFullDescription() {
-        return "Inspection Request: " + getDescription() + "\t\t" + " Technician: "
-                + getTechnician();
+        return "Inspection Request: " + getDescription() +
+               "\t\t" + " Technician: " + getTechnician();
     }
 }
