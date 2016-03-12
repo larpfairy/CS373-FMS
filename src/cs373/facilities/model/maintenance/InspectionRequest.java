@@ -11,6 +11,12 @@ public class InspectionRequest {
     private String id;
     private String description;
     private String technician;
+    
+    public InspectionRequest(String id, String descr, String technician) {
+    	this.id = id;
+    	this.description = descr;
+    	this.technician = technician;
+    }
 
     public void setID(String id) {
         this.id = id;

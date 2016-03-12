@@ -19,7 +19,9 @@ public class Unit {
     private List<InspectionRequest> inspectionRequests;
     private List<InspectionRequest> pastInspectionsLog;
 
-    Unit() {
+    public Unit(String id, int capacity) {
+    	this.ID = id;
+    	this.capacity = capacity;
         this.schedule = new Schedule();
         this.maintenanceSchedule = new Schedule();
         this.pastInspectionsLog = new ArrayList<>();
@@ -36,7 +38,7 @@ public class Unit {
     public String getSchedule() {
         String output = "";
         for (Event e : schedule.getEventList())
-        	output += e.getFullDescription();
+        	output += e.getFullDescription() + "\n";
         return output;
     }
     public Schedule getMaintScheduleObj() {

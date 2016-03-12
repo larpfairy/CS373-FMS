@@ -16,7 +16,8 @@ public class Facility {
     private List<Unit> units;
     private LocalDateTime beginningOfTime;
 
-    public Facility() {
+    public Facility(String name) {
+    	this.name = name;
         this.units = new ArrayList<>();
         this.beginningOfTime = LocalDateTime.now();
     }
