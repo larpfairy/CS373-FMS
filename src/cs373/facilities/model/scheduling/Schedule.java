@@ -1,16 +1,46 @@
-package cs373.facilities.model;
+package cs373.facilities.model.scheduling;
 
-//import java.util.List;
+import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
-//import java.time.temporal.ChronoUnit;
 
 public class Schedule {
 
-    private ArrayList<Event> eventList = new ArrayList<Event>();
+    private List<Event> eventList;
+    private LocalDateTime beginningOfTime;
+
+    public Schedule() {
+        this.beginningOfTime = LocalDateTime.now();
+        this.eventList = new ArrayList<>();
+    }
+
+    public Schedule(LocalDateTime beginningOfTime) {
+        this.beginningOfTime = LocalDateTime.now();
+        this.eventList = new ArrayList<Event>();
+    }
+
+    public void setBeginningOfTime(LocalDateTime time) {
+        this.beginningOfTime = time;
+    }
+    public LocalDateTime getBeginningOfTime() {
+        return beginningOfTime;
+    }
 
     public void addEvent(Event event) {
         eventList.add(event);
+    }
+    public String getEvents() {
+        String usage = "";
+        for (int i = 0; i < eventList.size(); i++) {
+            usage += eventList.get(i).getFullDescription();
+        }
+        return usage;
+    }
+    public List<Event> getEventList() {
+        return eventList;
+    }
+    public int getNumEvents() {
+        return eventList.size();
     }
 
     public void removeEvents(LocalDateTime start, LocalDateTime stop) {
@@ -36,24 +66,15 @@ public class Schedule {
         return true;
     }
 
-    public String getEvents() {
-        String usage = "";
+    public LocalDateTime findVacantInterval(int hours, LocalDateTime beginningOfTime) {
+        LocalDateTime head = beginningOfTime;
         for (int i = 0; i < eventList.size(); i++) {
-            usage += eventList.get(i).getFullDescription();
+            if (checkVacancyDuringInterval(head, head.plusHours(hours))) {
+                return head;
+            } else {
+                head = eventList.get(i).getStop().plusMinutes(30);
+            }
         }
-        return usage;
-    }
-
-    // public String getEvents() {
-    //     String usage = "";
-    //     for (int i = 0; i < eventList.size(); i++) {
-    //         usage += "Event " + i + ": \t" + eventList.get(i).getDescription() + "\t\t" +
-    //                  eventList.get(i).getStart() + " - " + eventList.get(i).getStop() + "\n";
-    //     }
-    //     return usage;
-    // }
-
-    public int getNumEvents() {
-        return eventList.size();
+        return head;
     }
 }

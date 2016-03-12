@@ -1,4 +1,4 @@
-package cs373.facilities.model;
+package cs373.facilities.model.facility;
 
 public class Address {
 
@@ -6,8 +6,6 @@ public class Address {
     private String city;
     private String state;
     private String zip;
-
-    public Address() {}
 
     public String getStreet() { return street; }
     public String getCity()   { return city;   }
