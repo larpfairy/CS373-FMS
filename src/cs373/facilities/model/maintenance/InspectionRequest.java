@@ -1,4 +1,4 @@
-package cs373.facilities.model;
+package cs373.facilities.model.maintenance;
 
 /**
  * An individual InspectionRequest. These are produced by people that work in

@@ -1,16 +1,17 @@
-package cs373.facilities.model;
+package cs373.facilities.model.scheduling;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
 public class Schedule {
 
-    private ArrayList<Event> eventList;
+    private List<Event> eventList;
     private LocalDateTime beginningOfTime;
 
     public Schedule() {
         this.beginningOfTime = LocalDateTime.now();
-        this.eventList = new ArrayList<Event>();
+        this.eventList = new ArrayList<>();
     }
 
     public Schedule(LocalDateTime beginningOfTime) {
@@ -34,6 +35,9 @@ public class Schedule {
             usage += eventList.get(i).getFullDescription();
         }
         return usage;
+    }
+    public List<Event> getEventList() {
+        return eventList;
     }
     public int getNumEvents() {
         return eventList.size();
@@ -64,12 +68,13 @@ public class Schedule {
 
     public LocalDateTime findVacantInterval(int hours, LocalDateTime beginningOfTime) {
         LocalDateTime head = beginningOfTime;
-        for (int i = 0; i < eventList.length; i++) {
+        for (int i = 0; i < eventList.size(); i++) {
             if (checkVacancyDuringInterval(head, head.plusHours(hours))) {
                 return head;
             } else {
                 head = eventList.get(i).getStop().plusMinutes(30);
             }
         }
+        return head;
     }
 }

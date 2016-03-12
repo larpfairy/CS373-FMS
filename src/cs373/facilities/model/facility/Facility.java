@@ -4,109 +4,128 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs373.facilities.model.Event;
-import cs373.facilities.model.MaintenanceRequest;
-import cs373.facilities.model.Schedule;
+import cs373.facilities.model.scheduling.Event;
+import cs373.facilities.model.scheduling.Schedule;
+//import cs373.facilities.model.maintenance.MaintenanceRequest;
 
 public class Facility {
 
     private String name;
-    private String manager;
     private Address address;
-    private int capacity;
+    private String manager;
+    private List<Unit> units;
     private LocalDateTime beginningOfTime;
 
-    public Facility(String name) {
-        this.name = name;
+    public Facility() {
+        this.units = new ArrayList<>();
         this.beginningOfTime = LocalDateTime.now();
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getFacilityName() {
-        return name;
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public String getAddress() { return address.getFullAddress(); }
+    public void setAddress(Address address) { this.address = address; }
+
+    public String getManager() { return manager; }
+    public void setManager(String manager) { this.manager = manager; }
+
+    public LocalDateTime getBeginningOfTime() { return beginningOfTime; }
+
+    public void addUnit(Unit unit) { this.units.add(unit); }
+    public String listUnits() {
+        String output = "";
+        for (Unit u : units)
+            output += "Unit: " + u.getID() + " | Capacity: " + u.getCapacity() + "\n";
+        return output;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-    public Address getAddress() {
-        return address;
-    }
-
-    public LocalDateTime getBeginningOfTime() {
-        return beginningOfTime;
-    }
-
-    public int requestAvailableCapacity(LocalDateTime start, LocalDateTime stop) {
-        return capacity;
-    }
-
-    // public Boolean isInUseDuringInterval(LocalDateTime start, LocalDateTime stop) {
-    //     return facilitySchedule.checkVacancyDuringInterval(start, stop);
-    // }
-
-    public void assignFacilityToUse(Event event){
-        if (facilitySchedule.checkVacancyDuringInterval(event.getStart(), event.getStop())) {
-            facilitySchedule.addEvent(event);
-        } else {
-            System.out.println("Could not schedule event due to conflict!");
-        }
-    }
-
-    public String listActualUsage() {
-        return facilitySchedule.getEvents();
-    }
-
-    public void makeFacilityMaintRequest(String msg, double cost) {
-        maintRequests.add(new MaintenanceRequest(msg, cost));
+    public String getSchedules() {
+        String output = "";
+        for (Unit u : units)
+            output += u.getID() + "\n" + u.getSchedule();
+        return output;
     }
 
     public void scheduleMaintenance() {
-        LocalDateTime startofMaintCycle = beginningOfTime.plusDays(10);
-        for (int i = 0; i < maintRequests.size(); i++) {
+        for (Unit u : units)
+            u.scheduleMaintenance();
+    }
 
-            // Maintenance events occur every 7 days, and take 24 hours to complete
-            LocalDateTime maintEventStart = startofMaintCycle.plusDays(i * 7);
-            LocalDateTime maintEventStop  = startofMaintCycle.plusDays(i * 7 + 1);
-            facilitySchedule.removeEvents(maintEventStart, maintEventStop);
-
-            // Construct a maintenance event:
-            Event maint = new Event(maintRequests.get(i).getRequest(),
-                                    maintEventStart,
-                                    maintEventStop,
-                                    true,
-                                    maintRequests.get(i).getCost());
-
-            facilitySchedule.addEvent(maint);
-            maintenanceLog.addEvent(maint);
+    public String listAvailableUnits(LocalDateTime start, LocalDateTime stop) {
+        System.out.println("The following are available during " + start.toString()
+                            + " - " + stop.toString());
+        String output = "";
+        for (Unit u : units) {
+            if (u.getUnitVacancy(start, stop)) {
+                output += "Unit: " + u.getID() + " | Capacity: " + u.getCapacity() + "\n";
+            }
         }
+        return output;
     }
 
     public double calcMaintCostForFacility() {
         double cost = 0;
-        for (MaintenanceRequest request : maintRequests)
-            cost += request.getCost();
+        for (Unit u : units) {
+            Schedule maintenanceSchedule = u.getMaintScheduleObj();
+            for (Event e : maintenanceSchedule.getEventList()) {
+                cost += e.getCost();
+            }
+        }
         return cost;
     }
 
     public int calcProblemRateForFacility() {
-        return maintenanceLog.getNumEvents() + maintRequests.size();
+        return 0;
     }
 
-    public String listMaintRequests() {
-        String output = "";
-        for (MaintenanceRequest request : maintRequests)
-            output += "Maintenance Request: " + request.getRequest() + " | " + "$ " + request.getCost() + "\n";
+    public String listInspectionRequests() {
+        String output = "Inspection Requests\n";
+        for (Unit u : units)
+            output += u.getInspectionRequests();
         return output;
     }
 
-    public Schedule getMaintenanceLog() {
-        return maintenanceLog;
-    }
-
-    public Schedule getSchedule() {
-        return facilitySchedule;
+    public String listScheduledMaintenance() {
+        String output = "Maintenance Events\n";
+        for (Unit u : units) {
+            Schedule maintSchedule = u.getMaintScheduleObj();
+            for (Event e : maintSchedule.getEventList()) {
+            	if (e.getIsMaintenance())
+            		output += e.getFullDescription();
+            }
+        }
+        return output;
     }
 }
+// public class Facility {
+//
+//     public int requestAvailableCapacity(LocalDateTime start, LocalDateTime stop) {
+//         return capacity;
+//     }
+//
+//     public void assignFacilityToUse(Event event){
+//         if (facilitySchedule.checkVacancyDuringInterval(event.getStart(), event.getStop())) {
+//             facilitySchedule.addEvent(event);
+//         } else {
+//             System.out.println("Could not schedule event due to conflict!");
+//         }
+//     }
+//
+//     public String listActualUsage() {
+//         return facilitySchedule.getEvents();
+//     }
+//
+//     public void makeFacilityMaintRequest(String msg, double cost) {
+//         maintRequests.add(new MaintenanceRequest(msg, cost));
+//     }
+//
+//     public int calcProblemRateForFacility() {
+//         return maintenanceLog.getNumEvents() + maintRequests.size();
+//     }
+//
+//
+//     public Schedule getMaintenanceLog() {
+//         return maintenanceLog;
+//     }
+// }

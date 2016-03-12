@@ -1,4 +1,4 @@
-package cs373.facilities.model;
+package cs373.facilities.model.scheduling;
 
 import java.time.LocalDateTime;
 
@@ -49,7 +49,7 @@ public class Event {
 
     public void setCost(double cost) { this.cost = cost; }
     public double getCost() { return cost; }
-    
+
     public String getFullDescription() {
         return "Event: \t" + getDescription() + "\t\t" + getStart() +
                " - " + getStop() + " Cost: $" + getCost();
