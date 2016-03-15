@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class UnitDAO {
+public class InspectionRequestDAO {
 
 	/** The name of the MySQL account to use (or empty for anonymous) */
 	private final String userName = "sqluser";
