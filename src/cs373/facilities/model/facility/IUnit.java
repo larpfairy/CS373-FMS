@@ -1,0 +1,38 @@
+package cs373.facilities.model.facility;
+
+import cs373.facilities.model.maintenance.InspectionRequest;
+import cs373.facilities.model.scheduling.Event;
+import cs373.facilities.model.scheduling.Schedule;
+
+import java.util.Random;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public interface Unit {
+
+    private String getID();
+    private void setID(String id);
+
+    public int getCapacity();
+    public void setCapacity(int capacity);
+
+    public String getSchedule();
+    public void setSchedule(Schedule schedule);
+
+    public void scheduleUse(Event e);
+
+    public boolean getUnitVacancy(LocalDateTime start, LocalDateTime stop);
+
+    public Schedule getMaintScheduleObj();
+    public String getMaintenanceSchedule();
+    public void setMaintSchedule(Schedule schedule);
+
+    public String getInspectionRequests();
+    public void addInspectionRequest(InspectionRequest request);
+
+    public String getPastInspectionsLog();
+
+    public void scheduleMaintenance();
+
+}

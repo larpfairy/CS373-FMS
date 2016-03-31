@@ -2,7 +2,7 @@ package cs373.facilities.model.scheduling;
 
 import java.time.LocalDateTime;
 
-public class Event {
+public class Event extends IEvent {
 
     private String description;
     private LocalDateTime start;

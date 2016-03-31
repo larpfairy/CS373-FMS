@@ -8,7 +8,7 @@ import cs373.facilities.model.scheduling.Event;
 import cs373.facilities.model.scheduling.Schedule;
 //import cs373.facilities.model.maintenance.MaintenanceRequest;
 
-public class Facility {
+public class Facility extends IFacility {
 
     private String name;
     private Address address;
