@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface Unit {
+public interface IUnit {
 
-    private String getUnitID();
-    private void setUnitID(String unitID);
+    public String getUnitID();
+    public void setUnitID(String unitID);
 
     public int getCapacity();
     public void setCapacity(int capacity);

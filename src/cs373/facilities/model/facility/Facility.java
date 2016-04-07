@@ -7,7 +7,7 @@ import java.util.List;
 import cs373.facilities.model.scheduling.Event;
 import cs373.facilities.model.scheduling.Schedule;
 
-public class Facility extends IFacility {
+public class Facility implements IFacility {
 
     private String name;
     private Address address;
@@ -36,14 +36,14 @@ public class Facility extends IFacility {
     public String listUnits() {
         String output = "";
         for (Unit u : units)
-            output += "Unit: " + u.getID() + " | Capacity: " + u.getCapacity() + "\n";
+            output += "Unit: " + u.getUnitID() + " | Capacity: " + u.getCapacity() + "\n";
         return output;
     }
 
     public String getSchedules() {
         String output = "";
         for (Unit u : units)
-            output += u.getID() + "\n" + u.getSchedule();
+            output += u.getUnitID() + "\n" + u.getSchedule();
         return output;
     }
 
@@ -58,7 +58,7 @@ public class Facility extends IFacility {
         String output = "";
         for (Unit u : units) {
             if (u.getUnitVacancy(start, stop)) {
-                output += "Unit: " + u.getID() + " | Capacity: " + u.getCapacity() + "\n";
+                output += "Unit: " + u.getUnitID() + " | Capacity: " + u.getCapacity() + "\n";
             }
         }
         return output;

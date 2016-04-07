@@ -2,7 +2,7 @@ package cs373.facilities.model.scheduling;
 
 import java.time.LocalDateTime;
 
-public class Event extends IEvent {
+public class Event implements IEvent {
 
     private String eventID;
     private String description;
@@ -39,6 +39,9 @@ public class Event extends IEvent {
         this.technician = technician;
         this.cost = cost;
     }
+
+    public void setEventID(String eventid) { this.eventID = eventid; }
+    public String getEventID() { return eventID; }
 
     public void setDescription(String description) { this.description = description; }
     public String getDescription() { return description; }

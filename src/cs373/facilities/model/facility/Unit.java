@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Unit {
+public class Unit implements IUnit {
 
     private String unitID;
     private int capacity;
@@ -47,10 +47,10 @@ public class Unit {
 
     public void scheduleUse(Event e) {
     	if (schedule.checkVacancyDuringInterval(e.getStart(), e.getStop())) {
-    		System.out.println("Unit " + ID + " | Adding:\n" + e.getFullDescription());
+    		System.out.println("Unit " + unitID + " | Adding:\n" + e.getFullDescription());
             schedule.addEvent(e);
     	} else {
-    		System.out.println("Could not add event: " + e.getDescription() + " to Unit " + ID + ".");
+    		System.out.println("Could not add event: " + e.getDescription() + " to Unit " + unitID + ".");
     	}
     }
 
@@ -102,7 +102,8 @@ public class Unit {
             LocalDateTime startMaint = schedule.findVacantInterval(duration, schedule.getBeginningOfTime());
 
             schedule.addEvent(
-                new Event(request.getDescription(),
+                new Event("someID",
+                          request.getDescription(),
                           startMaint,
                           startMaint.plusHours(duration),
                           true,

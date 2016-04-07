@@ -3,17 +3,20 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
 
-mainClassName = 'cs373.facilities.view.MainClass'
+mainClassName = "cs373.facilities.view.MainClass"
+
+sourceSets.main.java.srcDirs = ['src']
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '2.3'
+    gradleVersion = '2.3'
 }
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-  compile 'joda-time:joda-time:2.2'
-  compile 'org.springframework:spring-context:4.2.5.RELEASE'
+    compile 'org.springframework:spring-context:4.2.5.RELEASE'
+    compile 'org.postgresql:postgresql:9.4-1201-jdbc4'
+    compile 'org.hibernate:hibernate-core:5.1.0.Final'
 }

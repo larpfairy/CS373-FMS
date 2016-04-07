@@ -7,7 +7,7 @@ import java.util.List;
 import cs373.facilities.model.scheduling.Event;
 import cs373.facilities.model.scheduling.Schedule;
 
-public class Facility {
+public interface IFacility {
 
     public String getName();
     public void setName(String name);
@@ -35,5 +35,5 @@ public class Facility {
     public String listInspectionRequests();
 
     public String listScheduledMaintenance();
-    
+
 }

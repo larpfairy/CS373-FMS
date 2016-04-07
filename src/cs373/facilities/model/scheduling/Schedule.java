@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
-public class Schedule {
+public class Schedule implements ISchedule {
 
     private List<Event> eventList;
     private LocalDateTime beginningOfTime;

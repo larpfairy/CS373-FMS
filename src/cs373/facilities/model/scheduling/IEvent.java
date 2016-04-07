@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public interface IEvent {
 
-    public void setID(String eventID);
-    public String getID();
+    public void setEventID(String eventid);
+    public String getEventID();
 
     public void setDescription(String description);
     public String getDescription();
@@ -26,4 +26,5 @@ public interface IEvent {
     public double getCost();
 
     public String getFullDescription();
+
 }

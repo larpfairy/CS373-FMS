@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import cs373.facilities.dao.HibernatePGSQLHelper;
+// import cs373.facilities.dao.HibernatePGSQLHelper;
 import cs373.facilities.model.scheduling.*;
 import cs373.facilities.model.maintenance.*;
 import cs373.facilities.model.facility.Address;

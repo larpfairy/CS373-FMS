@@ -1,6 +1,6 @@
 package cs373.facilities.model.facility;
 
-public interface Address {
+public interface IAddress {
 
     public String getFacilityID();
     public void setFacilityID();
@@ -18,5 +18,5 @@ public interface Address {
     public void setZip(String zip);
 
     public String getFullAddress();
-    
+
 }

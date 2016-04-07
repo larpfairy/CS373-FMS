@@ -6,12 +6,12 @@ package cs373.facilities.model.maintenance;
  * through all pending InspectionRequets. These InspectionRequests in turn
  * produce cause MaintenanceRequests, if a problem is found.
  */
-public class InspectionRequest {
+public class InspectionRequest implements IInspectionRequest {
 
     private String id;
     private String description;
     private String technician;
-    
+
     public InspectionRequest(String id, String descr, String technician) {
     	this.id = id;
     	this.description = descr;
