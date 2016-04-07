@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<description>Wiring the dependencies for the Facility Management System.</description>
+
+	<context:component-scan base-package="cs373.facilities"/>
+
+    <!-- Facility -->
+    <bean id="address" class="cs373.facilities.model.Address" scope="prototype"/>
+    <bean id="facility" class="cs373.facilities.model.Facility" scope="prototype"/>
+    <bean id="unit" class="cs373.facilities.model.Unit" scope="prototype"/>
+
+    <!-- Maintenance -->
+    <bean id="inspectionrequest" class="cs373.facilities.maintenance.InspectionRequest" scope="prototype"/>
+
+    <!-- Scheduling -->
+    <bean id="schedule" class="cs373.scheduling.Schedule" scope="prototype"/>
+    <bean id="event" class="cs373.scheduling.Event" scope="prototype"/>
+
+</beans>

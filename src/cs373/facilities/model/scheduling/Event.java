@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class Event extends IEvent {
 
+    private String eventID;
     private String description;
     private LocalDateTime start;
     private LocalDateTime stop;
@@ -12,7 +13,11 @@ public class Event extends IEvent {
     private double cost;
 
     // Constructor for regular events
-    public Event(String description, LocalDateTime start, LocalDateTime stop) {
+    public Event(String eventID,
+                 String description,
+                 LocalDateTime start,
+                 LocalDateTime stop) {
+        this.eventID = eventID;
         this.description = description;
         this.start = start;
         this.stop = stop;
@@ -22,8 +27,11 @@ public class Event extends IEvent {
     }
 
     // Constructor for Maintenance events
-    public Event(String description, LocalDateTime start, LocalDateTime stop,
-                 Boolean isMaintenance, String technician, double cost) {
+    public Event(String eventID, String description,
+                 LocalDateTime start, LocalDateTime stop,
+                 Boolean isMaintenance, String technician,
+                 double cost) {
+        this.eventID = eventID;
         this.description = description;
         this.start = start;
         this.stop = stop;

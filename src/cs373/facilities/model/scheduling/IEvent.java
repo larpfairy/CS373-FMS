@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 public interface IEvent {
 
+    public void setID(String eventID);
+    public String getID();
+
     public void setDescription(String description);
     public String getDescription();
 

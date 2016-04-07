@@ -11,8 +11,8 @@ import java.util.List;
 
 public interface Unit {
 
-    private String getID();
-    private void setID(String id);
+    private String getUnitID();
+    private void setUnitID(String unitID);
 
     public int getCapacity();
     public void setCapacity(int capacity);

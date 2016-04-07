@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Unit {
 
-    private String ID;
+    private String unitID;
     private int capacity;
 
     private Schedule schedule;
@@ -19,8 +19,8 @@ public class Unit {
     private List<InspectionRequest> inspectionRequests;
     private List<InspectionRequest> pastInspectionsLog;
 
-    public Unit(String id, int capacity) {
-    	this.ID = id;
+    public Unit(String unitID, int capacity) {
+    	this.unitID = unitID;
     	this.capacity = capacity;
         this.schedule = new Schedule();
         this.maintenanceSchedule = new Schedule();
@@ -28,8 +28,8 @@ public class Unit {
         this.inspectionRequests = new ArrayList<>();
     }
 
-    public void setID(String id) { this.ID = id; }
-    public String getID() { return ID; }
+    public void setUnitID(String unitID) { this.unitID = unitID; }
+    public String getUnitID() { return unitID; }
 
     public void setCapacity(int capacity) { this.capacity = capacity; }
     public int getCapacity() { return capacity; }
@@ -44,7 +44,7 @@ public class Unit {
     public Schedule getMaintScheduleObj() {
         return maintenanceSchedule;
     }
-    
+
     public void scheduleUse(Event e) {
     	if (schedule.checkVacancyDuringInterval(e.getStart(), e.getStop())) {
     		System.out.println("Unit " + ID + " | Adding:\n" + e.getFullDescription());

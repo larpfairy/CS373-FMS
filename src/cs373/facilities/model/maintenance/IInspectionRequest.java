@@ -9,4 +9,5 @@ public interface InspectionRequest {
     public void setTechnician(String technician);
     public String getTechnician();
     public String getFullDescription();
+    
 }

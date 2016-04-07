@@ -6,7 +6,6 @@ import java.util.List;
 
 import cs373.facilities.model.scheduling.Event;
 import cs373.facilities.model.scheduling.Schedule;
-//import cs373.facilities.model.maintenance.MaintenanceRequest;
 
 public class Facility extends IFacility {
 
