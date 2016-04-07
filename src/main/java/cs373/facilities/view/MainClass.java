@@ -16,6 +16,12 @@ public class MainClass {
 
     public static void main(String[] args) {
 
+        ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring/app-context.xml");
+        // System.out.println("***************** Application Context instantiated! ******************");
+
+
+
+
     	// Facility argonneLab = new Facility("Argonne National Laboratory");
         //
         // Address cudahyAddress = new Address();

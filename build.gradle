@@ -1,11 +1,10 @@
 apply plugin: 'java'
-
 apply plugin: 'eclipse'
 apply plugin: 'application'
 
 mainClassName = "cs373.facilities.view.MainClass"
 
-sourceSets.main.java.srcDirs = ['src']
+/*sourceSets.main.java.srcDirs = ['src']*/
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
