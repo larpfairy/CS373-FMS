@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cs373.facilities.model.maintenance">
+    <class name="InspectionRequest" table="inspectionrequest">
+        <id name="id" column="id"/>
+        <property name="description" type="string" column="description"/>
+        <property name="technician" type="string" column="technician"/>
+	</class>
+</hibernate-mapping>

@@ -12,6 +12,8 @@ public class Event implements IEvent {
     private String technician;
     private double cost;
 
+    public Event() {}
+
     // Constructor for regular events
     public Event(String eventID,
                  String description,
@@ -40,26 +42,54 @@ public class Event implements IEvent {
         this.cost = cost;
     }
 
-    public void setEventID(String eventid) { this.eventID = eventid; }
-    public String getEventID() { return eventID; }
+    public String getEventID() { 
+        return eventID;
+    }
+    public void setEventID(String eventid) {
+        this.eventID = eventid; 
+    }
 
-    public void setDescription(String description) { this.description = description; }
-    public String getDescription() { return description; }
+    public String getDescription() { 
+        return description; 
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public void setStart(LocalDateTime start) { this.start = start; }
-    public LocalDateTime getStart() { return start; }
+    public LocalDateTime getStart() {
+        return start;
+    }
+    public void setStart(LocalDateTime start) {
+        this.start = start;
+    }
 
-    public void setStop(LocalDateTime stop) { this.stop = stop; }
-    public LocalDateTime getStop() { return stop; }
+    public LocalDateTime getStop() { 
+        return stop;
+    }
+    public void setStop(LocalDateTime stop) {
+        this.stop = stop;
+    }
 
-    public void setIsMaintenance(Boolean set) { this.isMaintenance = set; }
-    public Boolean getIsMaintenance() { return isMaintenance; }
+    public Boolean getIsMaintenance() {
+        return isMaintenance;
+    }
+    public void setIsMaintenance(Boolean set) {
+        this.isMaintenance = set;
+    }
 
-    public void setTechnician(String technician) { this.technician = technician; }
-    public String getTechnician() { return technician; }
+    public String getTechnician() {
+        return technician;
+    }
+    public void setTechnician(String technician) {
+        this.technician = technician;
+    }
 
-    public void setCost(double cost) { this.cost = cost; }
-    public double getCost() { return cost; }
+    public double getCost() {
+        return cost;
+    }
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
 
     public String getFullDescription() {
         return "Event: \t" + getDescription() + "\t\t" + getStart() +

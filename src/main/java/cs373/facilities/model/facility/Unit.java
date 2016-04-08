@@ -19,6 +19,13 @@ public class Unit implements IUnit {
     private List<InspectionRequest> inspectionRequests;
     private List<InspectionRequest> pastInspectionsLog;
 
+    public Unit() {
+        this.schedule = new Schedule();
+        this.maintenanceSchedule = new Schedule();
+        this.pastInspectionsLog = new ArrayList<>();
+        this.inspectionRequests = new ArrayList<>();
+    }
+
     public Unit(String unitID, int capacity) {
     	this.unitID = unitID;
     	this.capacity = capacity;
@@ -47,7 +54,7 @@ public class Unit implements IUnit {
 
     public void scheduleUse(Event e) {
     	if (schedule.checkVacancyDuringInterval(e.getStart(), e.getStop())) {
-    		System.out.println("Unit " + unitID + " | Adding:\n" + e.getFullDescription());
+    		// System.out.println("Unit " + unitID + " | Adding:\n" + e.getFullDescription());
             schedule.addEvent(e);
     	} else {
     		System.out.println("Could not add event: " + e.getDescription() + " to Unit " + unitID + ".");

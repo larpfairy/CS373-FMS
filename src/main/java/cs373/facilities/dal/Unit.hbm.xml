@@ -5,10 +5,24 @@
 
 <hibernate-mapping package="cs373.facilities.model.facility">
     <class name="Unit" table="unit">
+
         <id name="unitID" column="unitid"/>
+
         <property name="capacity" type="int" column="capacity"/>
         <one-to-one name="schedule" class="cs373.facilities.model.scheduling.Schedule" cascade="save-update, delete"></one-to-one>
         <one-to-one name="maintenanceSchedule" type="cs373.facilities.model.scheduling.Schedule" cascade="save-update, delete"></one-to-one>
-        // TODO: Lists of classes -- how to do?
-	</class>
+
+        <list name="inspectionRequests" table="inspectionrequest" cascade="all">
+            <key column="id" not-null="true"/>
+            <list-index column="idx"/>
+            <one-to-many class="cs373.facilities.maintenance.InspectionRequest"/>
+        </list>
+
+        <list name="pastInspectionsLog" table="inspectionrequest" cascade="all">
+            <key column="id" not-null="true"/>
+            <list-index column="idx"/>
+            <one-to-many class="cs373.facilities.maintenance.InspectionRequest"/>
+        </list>
+
+    </class>
 </hibernate-mapping>
