@@ -9,6 +9,7 @@ import cs373.facilities.model.scheduling.Schedule;
 
 public class Facility implements IFacility {
 
+    private int id;
     private String name;
     private Address address;
     private String manager;
@@ -27,6 +28,9 @@ public class Facility implements IFacility {
         this.beginningOfTime = LocalDateTime.now();
     }
 
+    public int getID() { return id; }
+    public void setID(int id) { this.id = id; }
+
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
@@ -42,14 +46,14 @@ public class Facility implements IFacility {
     public String listUnits() {
         String output = "";
         for (Unit u : units)
-            output += "Unit: " + u.getUnitID() + " | Capacity: " + u.getCapacity() + "\n";
+            output += "Unit: " + u.getID() + " | Capacity: " + u.getCapacity() + "\n";
         return output;
     }
 
     public String getSchedules() {
         String output = "";
         for (Unit u : units)
-            output += u.getUnitID() + "\n" + u.getSchedule();
+            output += u.getID() + "\n" + u.getSchedule();
         return output;
     }
 
@@ -64,7 +68,7 @@ public class Facility implements IFacility {
         String output = "";
         for (Unit u : units) {
             if (u.getUnitVacancy(start, stop)) {
-                output += "Unit: " + u.getUnitID() + " | Capacity: " + u.getCapacity() + "\n";
+                output += "Unit: " + u.getID() + " | Capacity: " + u.getCapacity() + "\n";
             }
         }
         return output;

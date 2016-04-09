@@ -29,7 +29,7 @@ public class MainClass {
        argonneLab.setAddress(argonneAddress);
 
        Unit particleAccelerator = (Unit) context.getBean("unit");
-       particleAccelerator.setUnitID("2148135");
+       particleAccelerator.setID(1);
        particleAccelerator.setCapacity(300);
 
        LocalDateTime event1Start = argonneLab.getBeginningOfTime();
@@ -44,14 +44,14 @@ public class MainClass {
        LocalDateTime event4Start = event3End.plusDays(3);
        LocalDateTime event4End = event4Start.plusDays(1);
 
-       particleAccelerator.scheduleUse(new Event("EV-1", padRight("Accelerate protons", 25), event1Start, event1End));
-       particleAccelerator.scheduleUse(new Event("EV-2", padRight("National Computing Conference", 25), event2Start, event2End));
-       particleAccelerator.scheduleUse(new Event("EV-3", padRight("Fire up SLAC", 25), event3Start, event3End));
-       particleAccelerator.scheduleUse(new Event("EV-4", padRight("Run weather simulations", 25), event4Start, event4End));
+       particleAccelerator.scheduleUse(new Event(padRight("Accelerate protons", 25), event1Start, event1End));
+       particleAccelerator.scheduleUse(new Event(padRight("National Computing Conference", 25), event2Start, event2End));
+       particleAccelerator.scheduleUse(new Event(padRight("Fire up SLAC", 25), event3Start, event3End));
+       particleAccelerator.scheduleUse(new Event(padRight("Run weather simulations", 25), event4Start, event4End));
 
-       particleAccelerator.addInspectionRequest(new InspectionRequest("PA-1", padRight("Can't get hot water", 27), "John Smith"));
-       particleAccelerator.addInspectionRequest(new InspectionRequest("PA-2", padRight("Magnets in need of replacement", 27), "Jack Smarts"));
-       particleAccelerator.addInspectionRequest(new InspectionRequest("PA-3", padRight("Helium tanks have ruptured!", 27), "Jacqueline Doe"));
+       particleAccelerator.addInspectionRequest(new InspectionRequest(1, padRight("Can't get hot water", 27), "John Smith"));
+       particleAccelerator.addInspectionRequest(new InspectionRequest(2, padRight("Magnets in need of replacement", 27), "Jack Smarts"));
+       particleAccelerator.addInspectionRequest(new InspectionRequest(3, padRight("Helium tanks have ruptured!", 27), "Jacqueline Doe"));
 
 
        System.out.println("\n" + particleAccelerator.getSchedule());

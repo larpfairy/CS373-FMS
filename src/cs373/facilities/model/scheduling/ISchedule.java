@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 public interface ISchedule {
 
+	public int getID();
+	public void setID(int id);
     public void setBeginningOfTime(LocalDateTime time);
     public LocalDateTime getBeginningOfTime();
     public void addEvent(Event event);

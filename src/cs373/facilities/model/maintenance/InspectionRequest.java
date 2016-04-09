@@ -8,20 +8,20 @@ package cs373.facilities.model.maintenance;
  */
 public class InspectionRequest implements IInspectionRequest {
 
-    private String id;
+    private int id;
     private String description;
     private String technician;
 
-    public InspectionRequest(String id, String descr, String technician) {
+    public InspectionRequest(int id, String descr, String technician) {
     	this.id = id;
     	this.description = descr;
     	this.technician = technician;
     }
 
-    public void setID(String id) {
+    public void setID(int id) {
         this.id = id;
     }
-    public String getID() {
+    public int getID() {
         return id;
     }
 

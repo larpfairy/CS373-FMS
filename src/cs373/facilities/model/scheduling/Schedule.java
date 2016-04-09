@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 public class Schedule implements ISchedule {
 
+    private int id;
     private List<Event> eventList;
     private LocalDateTime beginningOfTime;
 
@@ -18,6 +19,9 @@ public class Schedule implements ISchedule {
         this.beginningOfTime = LocalDateTime.now();
         this.eventList = new ArrayList<Event>();
     }
+
+    public int getID() { return id; }
+    public void setID(int id) { this.id = id; }
 
     public void setBeginningOfTime(LocalDateTime time) {
         this.beginningOfTime = time;

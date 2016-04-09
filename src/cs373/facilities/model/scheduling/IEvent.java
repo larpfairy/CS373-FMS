@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public interface IEvent {
 
-    public void setEventID(String eventid);
-    public String getEventID();
+    public void setID(int id);
+    public int getID();
 
     public void setDescription(String description);
     public String getDescription();

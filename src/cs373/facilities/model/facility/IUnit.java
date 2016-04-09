@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 
 public interface IUnit {
 
-    public String getUnitID();
-    public void setUnitID(String unitID);
+    public int getID();
+    public void setID(int id);
 
     public int getCapacity();
     public void setCapacity(int capacity);

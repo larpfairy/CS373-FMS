@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Unit implements IUnit {
 
-    private String unitID;
+    private int id;
     private int capacity;
 
     private Schedule schedule;
@@ -26,8 +26,8 @@ public class Unit implements IUnit {
         this.inspectionRequests = new ArrayList<>();
     }
 
-    public Unit(String unitID, int capacity) {
-    	this.unitID = unitID;
+    public Unit(int id, int capacity) {
+    	this.id = id;
     	this.capacity = capacity;
         this.schedule = new Schedule();
         this.maintenanceSchedule = new Schedule();
@@ -35,8 +35,8 @@ public class Unit implements IUnit {
         this.inspectionRequests = new ArrayList<>();
     }
 
-    public void setUnitID(String unitID) { this.unitID = unitID; }
-    public String getUnitID() { return unitID; }
+    public void setID(int id) { this.id = id; }
+    public int getID() { return id; }
 
     public void setCapacity(int capacity) { this.capacity = capacity; }
     public int getCapacity() { return capacity; }
@@ -57,7 +57,7 @@ public class Unit implements IUnit {
     		// System.out.println("Unit " + unitID + " | Adding:\n" + e.getFullDescription());
             schedule.addEvent(e);
     	} else {
-    		System.out.println("Could not add event: " + e.getDescription() + " to Unit " + unitID + ".");
+    		System.out.println("Could not add event: " + e.getDescription() + " to Unit " + id + ".");
     	}
     }
 
@@ -109,8 +109,7 @@ public class Unit implements IUnit {
             LocalDateTime startMaint = schedule.findVacantInterval(duration, schedule.getBeginningOfTime());
 
             schedule.addEvent(
-                new Event("someID",
-                          request.getDescription(),
+                new Event(request.getDescription(),
                           startMaint,
                           startMaint.plusHours(duration),
                           true,

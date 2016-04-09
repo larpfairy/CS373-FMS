@@ -28,8 +28,8 @@
 		<mapping resource="src/cs373/facilities/dal/Address.hbm.xml"/>
 		<mapping resource="src/cs373/facilities/dal/Event.hbm.xml"/>
 		<mapping resource="src/cs373/facilities/dal/Facility.hbm.xml"/>
-                <mapping resource="src/cs373/facilities/dal/Unit.hbm.xml"/>
-                <mapping resource="src/cs373/facilities/dal/InspectionRequest.hbm.xml"/>
-                <mapping resource="src/cs373/facilities/dal/Schedule.hbm.xml"/>
+        <mapping resource="src/cs373/facilities/dal/Unit.hbm.xml"/>
+        <mapping resource="src/cs373/facilities/dal/InspectionRequest.hbm.xml"/>
+        <mapping resource="src/cs373/facilities/dal/Schedule.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

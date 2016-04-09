@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 public interface IFacility {
 
+    public int getID();
+    public void setID(int id);
+
     public String getName();
     public void setName(String name);
 
