@@ -1,11 +1,6 @@
 package cs373.facilities.model.facility;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import cs373.facilities.model.scheduling.Event;
-import cs373.facilities.model.scheduling.Schedule;
 
 public interface IFacility {
 

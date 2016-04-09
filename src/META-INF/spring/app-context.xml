@@ -20,10 +20,4 @@
     <!-- Scheduling -->
     <bean id="schedule" class="cs373.facilities.model.scheduling.Schedule" scope="prototype"/>
     <bean id="event" class="cs373.facilities.model.scheduling.Event" scope="prototype"/>
-
-    <!-- Fixtures for use in main class -->
-    <!-- <bean id="argonneSchedule" class="cs373.facilities.model.scheduling.Schedule" scope="prototype"/> -->
-    
-
-
 </beans>

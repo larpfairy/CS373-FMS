@@ -1,7 +1,6 @@
 package cs373.facilities.model.scheduling;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.time.LocalDateTime;
 
 public interface ISchedule {

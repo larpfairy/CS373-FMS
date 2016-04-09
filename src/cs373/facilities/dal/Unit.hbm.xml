@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 10, 2016 12:09:06 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cs373.facilities.model.facility.Unit" table="UNIT">
+        <id name="unitID" type="java.lang.String">
+            <column name="UNITID" />
+            <generator class="assigned" />
+        </id>
+        <property name="capacity" type="int">
+            <column name="CAPACITY" />
+        </property>
+        <many-to-one name="schedule" class="cs373.facilities.model.scheduling.Schedule" fetch="join">
+            <column name="SCHEDULE" />
+        </many-to-one>
+        <many-to-one name="maintenanceSchedule" class="cs373.facilities.model.scheduling.Schedule" access="field" fetch="join">
+            <column name="MAINTENANCESCHEDULE" />
+        </many-to-one>
+        <list name="inspectionRequests" inverse="false" table="INSPECTIONREQUEST" lazy="true" access="field">
+            <key>
+                <column name="UNITID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="cs373.facilities.model.maintenance.InspectionRequest" />
+        </list>
+        <list name="pastInspectionsLog" inverse="false" table="INSPECTIONREQUEST" lazy="true" access="field">
+            <key>
+                <column name="UNITID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="cs373.facilities.model.maintenance.InspectionRequest" />
+        </list>
+    </class>
+</hibernate-mapping>

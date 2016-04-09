@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 10, 2016 12:09:06 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cs373.facilities.model.facility.Facility" table="FACILITY">
+        <id name="name" type="java.lang.String">
+            <column name="NAME" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="address" class="cs373.facilities.model.facility.Address" fetch="join">
+            <column name="ADDRESS" />
+        </many-to-one>
+        <property name="manager" type="java.lang.String">
+            <column name="MANAGER" />
+        </property>
+        <list name="units" inverse="false" table="UNIT" lazy="true" access="field">
+            <key>
+                <column name="NAME" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="cs373.facilities.model.facility.Unit" />
+        </list>
+        <property name="beginningOfTime" type="java.time.LocalDateTime" access="field">
+            <column name="BEGINNINGOFTIME" />
+        </property>
+    </class>
+</hibernate-mapping>

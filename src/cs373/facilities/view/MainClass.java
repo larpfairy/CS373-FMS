@@ -1,6 +1,6 @@
 package cs373.facilities.view;
 
-import org.hibernate.Session;
+//import org.hibernate.Session;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,54 +14,54 @@ public class MainClass {
 
     public static void main(String[] args) {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("file:src/META-INF/spring/app-context.xml");
+    	ApplicationContext context = new ClassPathXmlApplicationContext("file:src/META-INF/spring/app-context.xml");
         System.out.println("****************** Application Context instantiated! ******************");
 
-        Facility argonneLab = (Facility) context.getBean("facility");
-        argonneLab.setName("Argonne Lab");
-        argonneLab.setManager("Peter Littlewood");
+       Facility argonneLab = (Facility) context.getBean("facility");
+       argonneLab.setName("Argonne Lab");
+       argonneLab.setManager("Peter Littlewood");
 
-        Address argonneAddress = (Address) context.getBean("address");
-        argonneAddress.setStreet("123 Sheridan Avenue");
-        argonneAddress.setState("IL");
-        argonneAddress.setZip("60660");
-        argonneAddress.setCity("Chicago");
-        argonneLab.setAddress(argonneAddress);
+       Address argonneAddress = (Address) context.getBean("address");
+       argonneAddress.setStreet("123 Sheridan Avenue");
+       argonneAddress.setState("IL");
+       argonneAddress.setZip("60660");
+       argonneAddress.setCity("Chicago");
+       argonneLab.setAddress(argonneAddress);
 
-        Unit particleAccelerator = (Unit) context.getBean("unit");
-        particleAccelerator.setUnitID("2148135");
-        particleAccelerator.setCapacity(300);
+       Unit particleAccelerator = (Unit) context.getBean("unit");
+       particleAccelerator.setUnitID("2148135");
+       particleAccelerator.setCapacity(300);
 
-        LocalDateTime event1Start = argonneLab.getBeginningOfTime();
-        LocalDateTime event1End = event1Start.plusDays(2);
+       LocalDateTime event1Start = argonneLab.getBeginningOfTime();
+       LocalDateTime event1End = event1Start.plusDays(2);
 
-        LocalDateTime event2Start = event1End.plusDays(7);
-        LocalDateTime event2End = event2Start.plusDays(4);
+       LocalDateTime event2Start = event1End.plusDays(7);
+       LocalDateTime event2End = event2Start.plusDays(4);
 
-        LocalDateTime event3Start = event2End.plusDays(4);
-        LocalDateTime event3End = event3Start.plusDays(2);
+       LocalDateTime event3Start = event2End.plusDays(4);
+       LocalDateTime event3End = event3Start.plusDays(2);
 
-        LocalDateTime event4Start = event3End.plusDays(3);
-        LocalDateTime event4End = event4Start.plusDays(1);
+       LocalDateTime event4Start = event3End.plusDays(3);
+       LocalDateTime event4End = event4Start.plusDays(1);
 
-        particleAccelerator.scheduleUse(new Event("EV-1", padRight("Accelerate protons", 25), event1Start, event1End));
-        particleAccelerator.scheduleUse(new Event("EV-2", padRight("National Computing Conference", 25), event2Start, event2End));
-        particleAccelerator.scheduleUse(new Event("EV-3", padRight("Fire up SLAC", 25), event3Start, event3End));
-        particleAccelerator.scheduleUse(new Event("EV-4", padRight("Run weather simulations", 25), event4Start, event4End));
+       particleAccelerator.scheduleUse(new Event("EV-1", padRight("Accelerate protons", 25), event1Start, event1End));
+       particleAccelerator.scheduleUse(new Event("EV-2", padRight("National Computing Conference", 25), event2Start, event2End));
+       particleAccelerator.scheduleUse(new Event("EV-3", padRight("Fire up SLAC", 25), event3Start, event3End));
+       particleAccelerator.scheduleUse(new Event("EV-4", padRight("Run weather simulations", 25), event4Start, event4End));
 
-        particleAccelerator.addInspectionRequest(new InspectionRequest("PA-1", padRight("Can't get hot water", 27), "John Smith"));
-        particleAccelerator.addInspectionRequest(new InspectionRequest("PA-2", padRight("Magnets in need of replacement", 27), "Jack Smarts"));
-        particleAccelerator.addInspectionRequest(new InspectionRequest("PA-3", padRight("Helium tanks have ruptured!", 27), "Jacqueline Doe"));
+       particleAccelerator.addInspectionRequest(new InspectionRequest("PA-1", padRight("Can't get hot water", 27), "John Smith"));
+       particleAccelerator.addInspectionRequest(new InspectionRequest("PA-2", padRight("Magnets in need of replacement", 27), "Jack Smarts"));
+       particleAccelerator.addInspectionRequest(new InspectionRequest("PA-3", padRight("Helium tanks have ruptured!", 27), "Jacqueline Doe"));
 
 
-        System.out.println("\n" + particleAccelerator.getSchedule());
+       System.out.println("\n" + particleAccelerator.getSchedule());
 
-        particleAccelerator.scheduleMaintenance();
+       particleAccelerator.scheduleMaintenance();
 
-        System.out.println("\nCurrent inspection requests: ");
-        System.out.println(particleAccelerator.getInspectionRequests());
+       System.out.println("\nCurrent inspection requests: ");
+       System.out.println(particleAccelerator.getInspectionRequests());
 
-        System.out.println("Scheduling maintenance...\n\n" + particleAccelerator.getSchedule());
+       System.out.println("Scheduling maintenance...\n\n" + particleAccelerator.getSchedule());
 
 //        LocalDateTime event1Start = argonneLab.getBeginningOfTime();
 //        LocalDateTime event1End = event1Start.plusDays(2);
